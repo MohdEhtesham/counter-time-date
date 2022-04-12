@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To Do List</title>
+    <style >
+    	*,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 900;
+    min-width: 450px;
+    position: absolute;
+    top:20%;
+    left: 30%;
+	background: grey;
+	
+
+}
+
+#newtask{
+    position: relative;
+    padding: 30px 20px;
+}
+#newtask input{
+    width: 80%;
+    height: 40px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 500;
+    position: relative;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+
+#newtask button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: skyblue;
+    border: none;
+    color: grey,
+}
+#tasks{
+    padding: 30px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+}
+.task{
+    background-color:lightgrey;
+    height: 50px;
+	margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+	border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+    cursor: pointer;
+}
+.task span{
+    font-size: 15px;
+    font-weight: 400;
+}
+.task button{
+    background-color:skyblue;
+    color: black;
+    height: 100%;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="newtask">
+            <input type="text" placeholder="please enter text...">
+            <button id="add">Add</button>
+        </div>
+
+        <div id="tasks"></div>
+    </div>
+    
+    <script >
+document.querySelector('#add').onclick = function(){
+    if(document.querySelector('#newtask input').value.length == 0){
+        alert("Error")
+    }
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#newtask input').value}
+                </span>
+                <button class="delete" >delete
+                </button>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+ 
+    }
+}
+    </script>
+</body>
+</html>

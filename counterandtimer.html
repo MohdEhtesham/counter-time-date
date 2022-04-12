@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>counter and timer watch</title>
+    <style>
+        .container{
+            border:2px solid black;
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: skyblue;
+            
+        }
+    #tmd{
+        border: 2px solid black;
+        background-color: skyblue;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        
+        
+        
+
+    }
+    </style>
+</head>
+<body onload="startTime()">
+
+    <div class="container">
+    <button onclick="increment()">+</button>  
+    <h2 id="counting"></h2>
+    <button onclick="decrement()">-</button>     
+        
+    
+</div>
+<div id="tmd">
+
+    <h2>time and time</h2>
+    
+    <div id="time"></div>
+    
+    <div id="dt">12/04/4444</div>
+</div>
+
+</div>
+<script>
+        var data = 0;
+  //fgdchjgk
+  document.getElementById("counting").innerText = data;
+  increment = () => {
+      data = data + 1;
+      document.getElementById("counting").innerText = data;
+  }
+  decrement = () => {
+      data = data - 1;
+      document.getElementById("counting").innerText = data;
+  }
+    </script>
+    
+  
+  <script>
+    startTime=()=> {
+    var E = new Date();
+    var h = E.getHours();
+    var m = E.getMinutes();
+    var s = E.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('time').innerHTML = 
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 1000);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i}; 
+    return i;
+}
+</script>
+<script>
+    var d=new Date();
+    md=d.getDate();
+    m=d.getMonth()+1;
+    if(md<10){
+        md="0"+md;
+    }
+    if(m<10){
+        m="0"+m
+    }
+    var dmy=md+"/"+m+"/"+d.getFullYear();
+    document.getElementById("dt").innerHTML=dmy;
+</script>
+
+
+
+    
+</body>
+</html>
